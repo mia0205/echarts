@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+    <div style="width:600px;height:400px"></div>
+    <script>
+        // 通用配置,title里textStyle文字样式,标题边框borderWidth borderColor borderRadius
+        // tooltip:提示框组件，用于配置鼠标滑过或点击图表时的显示框:触发类型：trigger有两个可选值item,axis 触发时机：triggerOn 格式化：formatter
+        // 步骤3：初始化echarts实例对象
+        const myCharts = echarts.init(document.querySelector('div'))
+        // 准备配置项
+        var option ={
+            title:{
+                text:'期末语文成绩',
+                textStyle: {
+                    color: 'red'
+                },
+                borderWidth:5,
+                borderColor:'blue',
+                borderRadius:5,
+                left:30,
+                top:10
+            },
+            tooltip:{
+                trigger:'item',
+                triggerOn:'click',
+                formatter:'haha'
+
+            },
+            xAxis:{
+                type: 'category',
+                data: ['张三', '里斯', '王五', '闰土', '小明', '茅台', '二牛','大强']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    data: [88, 92, 63, 77, 94, 80, 72,86],
+                    type: 'bar'
+                }
+            ]
+
+        }
+        // 步骤5：将配置项设置给echarts实例对象
+        myCharts.setOption(option)
+    </script>
+    
+</body>
+</html>
