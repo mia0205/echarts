@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+    <div style="width: 600px; height: 400px;">
+
+    </div>
+    <script>
+        var myEchart = echarts.init(document.querySelector('div'))
+        var xDataArr = ['1月','2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+        var yDataArr = [3000,2800,900,1000,800,700,1400,1300,900,1000,800,600]
+        var yDataArr2 = [2000, 3800, 1900, 500, 900, 1700, 2400, 300, 1900, 1500, 1800, 200]
+        // 设置配置项
+        var option = {
+            xAxis:{
+                type:'category',
+                data:xDataArr,
+                // 紧挨边缘
+                boundaryGap: false
+
+            },
+            yAxis:{
+                type:'value',
+                data:yDataArr,
+                // 从最小的值开始
+                scale:true
+
+            },
+            series:[
+                {
+                name:'康师傅',
+                type:'line',
+                data:yDataArr,
+                // 值任意
+                stack:'all',
+                // 标注一个点,data的第一个元素是最大值，第二个是最小值
+                markPoint:{
+                    data:[
+                        {
+                            type:'max'
+                        },
+                        {
+                            type:'min'
+                        }
+                    ]
+                },
+                // 平均值
+                markLine: {
+                        data: [{
+                            type: 'average'
+                        }]
+                    },
+                    // 标注区间
+                markArea: {
+                        data: [
+                            [
+                                {
+                                    xAxis:'1月'
+                                },
+                                {
+                                    xAxis: '2月'
+                                }
+                            
+                            ],
+                            [
+                                {
+                                    xAxis: '7月'
+                                },
+                                {
+                                    xAxis: '8月'
+                                }
+                            ]
+                        ]
+                    },
+                smooth:true,
+                // 线条样式
+                lineStyle:{
+                    color:'green',
+                    // 线条类型
+                    type:'dashed'
+                    // 点线 dotted 
+                },
+                // 填充风格
+                areaStyle:{
+                    color:'pink'
+                },
+                
+                },
+                {
+                    type:'line',
+                    data: yDataArr2,
+                    // 堆叠图
+                    stack: 'all',
+                }
+                
+
+                
+            ]
+        }
+
+        myEchart.setOption(option)
+    </script>
+</body>
+</html>
