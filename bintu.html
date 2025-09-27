@@ -21,7 +21,21 @@
             series:[
                 {
                     type:'pie',
-                    data:data
+                    data:data,
+                    // 饼图文字显示
+                    label:{
+                        show:true, //显示文字
+                        // 决定文字显示内容
+                        formatter:function(arg){
+                            return arg.name +'平台'+ arg.value+'元\n'+ arg.percent +'%'
+                        }
+                    },
+                    // radius:'40%', //半径为20
+                    radius:['50%','75%'], // 第一个元素是内院半径，第二个是外援的半径
+                    // 南丁格爱图
+                    roseType:'radius',
+                    selectedMode:'single',  //选中的效果，距离圆点一小段距离
+                    selectedOffset:10
                 }
             ]
         }
